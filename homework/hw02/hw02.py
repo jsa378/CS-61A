@@ -220,3 +220,19 @@ def restrict_both(f, low_d, high_d, low_r, high_r):
     -inf
     """
     return restrict_range(restrict_domain(f, low_d=low_d, high_d=high_d), low_r=low_r, high_r=high_r)
+
+def tik(tok):
+    """Returns a function that takes gram and prints tok and gram on a line.
+    >>> tik(5)(6)
+    5 6
+    """
+    def insta(gram):
+        # ... # The implementation of this function has been omitted.
+        print(tok, gram)
+    return insta
+
+tik(tik(5)(print(6)))(print(7))
+
+print('break')
+
+tik(tik(print(6))(5))(print(7))
