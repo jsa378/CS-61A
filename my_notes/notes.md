@@ -31,3 +31,18 @@ square(3)
 cube(4)
 ```
 there are three frames. In the global frame, we have `x = 2`, and the names `square` and `cube` refer to their respective functions. In the `square` frame, we have `x = 3`, and in the `cube` frame, we have `x = 4`. Thus, in this program, `x` refers to three different values, but there's no problem because the three frames are separate. Also note that the local function frames keep track of the values they return.
+
+## Ch. 1.4
+
+## Ch. 1.5
+
+## Ch. 1.6
+
+- We use functions to encapsulate behavior that we want to use repeatedly
+- Functions can take other functions as arguments
+- Functions can also be defined inside other functions. Such an inner function does not have access to the global environment (I don't think); its environment is the function in which it's defined.
+- A function can return antother function. The environment for this returned function is still the function in which it was defined.
+
+I'm not sure that I have a formal definition for an environment, but it's roughly a record of which names currently refer to which values.
+
+Currying is a general strategy for working with a function of multiple arguments by working only with functions of a single argument. (Note that this is *not* function composition.) Here is a general example. We have $f \colon X \times Y \to Z$, and we want to express this in terms of single-argument functions. To do this, just define $g \colon X \to Z^Y$ by $x \mapsto \left( h \colon Y \to Z, y \mapsto f(x, y) \right)$. Then giving $x$ to $g$ results in a function that, when given $y$, results in $f(x, y)$. This is apparently useful in programming sometimes.
