@@ -122,4 +122,17 @@ def cycle(f1, f2, f3):
     19
     """
     "*** YOUR CODE HERE ***"
+    def g(n):
+        def h(x):
+            if n == 0:
+                return x
+            else:
+                funcs = [f1, f2, f3]
+                counter = 1
+                while counter <= n:
+                    x = funcs[(counter - 1) % 3](x)
+                    counter += 1
+                return x
+        return h
+    return g
 
