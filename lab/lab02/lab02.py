@@ -87,6 +87,11 @@ def multiple(a, b):
     42
     """
     "*** YOUR CODE HERE ***"
+    counter = 1
+    while True:
+        if counter % a == 0 and counter % b == 0:
+            return counter
+        counter += 1
 
 
 
