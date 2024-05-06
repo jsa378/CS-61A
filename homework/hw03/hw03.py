@@ -151,10 +151,54 @@ def count_coins(total):
     True
     """
     "*** YOUR CODE HERE ***"
-    if total == 1:
-        return 1
+    # coins = [1, 5, 10, 25]
+    def help(total, cur_coin):
+        if total == 0 or total == 1:
+            return 1
+        elif total < 0:
+            return 0
+        if cur_coin == None:
+            return 0
+        # return count_coins(total - next_smaller_coin(cur_coin))
+        return help(total - cur_coin, cur_coin) + help(total, next_smaller_coin(cur_coin))
+    # if total == 0 or total == 1:
+    #     return 1
+    # elif total < 0:
+    #     return 0
+    # else:
+    #     return count_coins()
+    return help(total, 25)
     
-
+# def my_count_coins(total, coins=[1, 2, 10, 25]):
+#     """Return the number of ways to make change using coins of value of 1, 5, 10, 25.
+#     >>> my_count_coins(15)
+#     6
+#     >>> my_count_coins(10)
+#     4
+#     >>> my_count_coins(20)
+#     9
+#     >>> my_count_coins(100) # How many ways to make change for a dollar?
+#     242
+#     >>> my_count_coins(200)
+#     1463
+#     >>> from construct_check import check
+#     >>> # ban iteration
+#     >>> check(HW_SOURCE_FILE, 'count_coins', ['While', 'For'])
+#     True
+#     """
+#     if total == 0 or total == 1:
+#         return 1
+#     elif total < 0:
+#         return 0
+#     elif coins == [1]:
+#         return 1
+#     else:
+#         return (my_count_coins(total - 25, [1, 2, 10, 25])
+#                 + my_count_coins(total - 10, [1, 2, 10, 25])
+#                 + my_count_coins(total - 2, [1, 2, 10, 25])
+#                 + my_count_coins(total, [1])
+#         )
+    
 
 def print_move(origin, destination):
     """Print instructions to move a disk."""
