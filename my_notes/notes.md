@@ -56,3 +56,12 @@ Given this focus on methods for doing certain things, it's natural that within c
 Recursion seems very similar to induction. Induction starts with a base case and then builds up. In contrast, recursion seems to start at $n$, and then work its way down to the base case. (I suppose this suggests that a recursive algorithm that has no base case, or never reaches it, must be incorrect.)
 
 Mutual recursion seems to be just splitting up the recursion over multiple functions. (That might be an imprecise way of thinking about it.) Tree recursion is when solving at $n$ involves spawning more than one case at $n - 1$. This seems to grow exponentially inherently. It's interesting to note how much redundant computation there is in the tree-recursed version of `fib(n)`; this naturally leads to the topic of the analysis of algorithms and their efficiency.
+
+---
+
+I think to exhibit at least a minimal grasp of recursion as a programmer, there are two things you need to do: first, you need to try to accurately specify the relationship between case $n$ and case $n - 1$. For example, to compute the $n$-th Fibonacci number, you need to know that that it's the sum of the $n - 1$-th and $n - 2$-th Fibonacci numbers. Second, you need to accurately specify the base case(s).
+
+Now, I don't know how you *prove* that a recursive program is correct, but I think that's at least the idea for how you *write* a recursive program.
+
+## Ch. 2.1
+
