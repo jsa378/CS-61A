@@ -161,8 +161,56 @@ def count_coins(total):
         return help(total - cur_coin, cur_coin) + help(total, next_smaller_coin(cur_coin))
     return help(total, 25)
 
-print(count_coins(100))
+# print(count_coins(100))
 
+def collapse(n):
+    """For non-negative N, the result of removing all digits that are equal to the digit on their right, so that no adjacent digits are the same.
+    >>> collapse(1234)
+    1234
+    >>> collapse(12234441)
+    12341
+    >>> collapse(0)
+    0
+    >>> collapse(3)
+    3
+    >>> collapse(11200000013333)
+    12013
+    """
+    left, last = n // 10, n % 10
+    if left == 0:
+        return last
+    elif left % 10 == last:
+        return collapse(left)
+    else:
+        return collapse(left) * 10 + last
+    
+def repeat_digits(n):
+    """Given a positive integer N, returns a number with each digit repeated.
+    >>> repeat_digits(1234)
+    11223344
+    """
+    last, rest = n % 10, n // 10
+    if rest == 0:
+        return last * 10 + last
+    return repeat_digits(rest) * 100 + last * 10 + last
+
+def contains(a, b):
+    """Return whether the digits of a are contained in the digits of b.
+    >>> contains(357, 12345678)
+    True
+    >>> contains(753, 12345678)
+    False
+    >>> contains(357, 37)
+    False
+    """
+    if a == b:
+        return True
+    if a > b:
+        return False
+    if a % 10 == b % 10:
+        return contains(a // 10, b // 10)
+    else:
+        return contains(a, b // 10)
 
 def print_move(origin, destination):
     """Print instructions to move a disk."""
@@ -197,6 +245,25 @@ def move_stack(n, start, end):
     """
     assert 1 <= start <= 3 and 1 <= end <= 3 and start != end, "Bad start/end"
     "*** YOUR CODE HERE ***"
+    if n == 1:
+        print_move(start, end)
+    else:
+        # move_stack(n - 1, start, end)
+        # print_move(start, 2)
+        # move_stack(n - 1, end, start)
+        # print_move(2, end)
+        # move_stack(n - 1, start, end)
+        ###
+        # move_stack(n - 1, 1, 2)
+        # print_move(1, 3)
+        # move_stack(n - 1, 2, 3)
+        other = 6 - start - end
+        move_stack(n - 1, start, other)
+        print_move(start, end)
+        move_stack(n - 1, other, end)
+        # move_stack(n - 2, 2, 1)
+        # print_move(2, 3)
+        # move_stack(n - 2, 1, 3)
 
 
 from operator import sub, mul
@@ -212,5 +279,5 @@ def make_anonymous_factorial():
     ...     ['Assign', 'AnnAssign', 'AugAssign', 'NamedExpr', 'FunctionDef', 'Recursion'])
     True
     """
-    return 'YOUR_EXPRESSION_HERE'
+    return lambda n: 1 if (n == 0 or n == 1) else mul(n, sub(n, 1)) # 'YOUR_EXPRESSION_HERE'
 
