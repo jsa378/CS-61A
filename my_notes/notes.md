@@ -65,3 +65,10 @@ Now, I don't know how you *prove* that a recursive program is correct, but I thi
 
 ## Ch. 2.1
 
+## Ch. 2.2
+
+In Chapter 1, I think part of what they're trying to teach us is that we can use functions to encapsulate or abstract away processes---I think perhaps the real reason for all this is that we're trying to find ways to structure programs that enable us to think most effectively about them. Sometimes you need to think about a program at a low level, closer to zeros and ones, but other times you want to think about a program at a higher level, like "I need a function that computes how many ways I can make change for $n$ cents."
+
+In Chapter 2, we're pursuing a similar idea, but with respect to data. Data and functions are not separate entities. I think the general idea is that sometimes you need to think about data at a lower level, *e.g.*, in terms of floating point numbers, but other times you want to think about data at a more abstract level, for example a user's profile on a dating app.
+
+I think part of the reason the book promotes these different levels of abstraction is to try to make it possible to think about a program at different levels of abstraction, and also because it hopefully increases the modularity of the program and makes it easier to modify.
