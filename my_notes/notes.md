@@ -72,3 +72,11 @@ In Chapter 1, I think part of what they're trying to teach us is that we can use
 In Chapter 2, we're pursuing a similar idea, but with respect to data. Data and functions are not separate entities. I think the general idea is that sometimes you need to think about data at a lower level, *e.g.*, in terms of floating point numbers, but other times you want to think about data at a more abstract level, for example a user's profile on a dating app.
 
 I think part of the reason the book promotes these different levels of abstraction is to try to make it possible to think about a program at different levels of abstraction, and also because it hopefully increases the modularity of the program and makes it easier to modify.
+
+## Ch. 2.3
+
+I'm probably misunderstanding aspects of this presentation, but I think that there are a couple of things that are not being made clear. Below is my flawed attempt to make some sense of this.
+
+There is a topic called "data structures" that has to do with how data are stored and manipulated in the computer, I think. We can either talk about *abstract data types*, or *data structures*. Abstract data types are mathematical models for ways of storing (and accessing?) data in the computer. Data structures are concrete implementations.
+
+We have various types of abstract data types and data structures because they are good for different things, and offer different tradeoffs. For example, data structure $A$ may be more efficient if you need to update the data in $A$ frequently, while data structure $B$ may be more efficient if you only need to access the data, not to modify any of it.
