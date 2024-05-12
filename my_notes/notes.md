@@ -63,6 +63,8 @@ I think to exhibit at least a minimal grasp of recursion as a programmer, there 
 
 Now, I don't know how you *prove* that a recursive program is correct, but I think that's at least the idea for how you *write* a recursive program.
 
+Note: I have been working on Discussion 04, and solving some exercises in programming recurisvely. I think it may be helpful to try to think in terms of strong induction when trying to reason about how to write a recursive function.
+
 ## Ch. 2.1
 
 ## Ch. 2.2
