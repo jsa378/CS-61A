@@ -31,6 +31,11 @@ def pick(paragraphs, select, k):
     """
     # BEGIN PROBLEM 1
     "*** YOUR CODE HERE ***"
+    okay_paras = [para for para in paragraphs if select(para)]
+    if k > len(okay_paras) - 1:
+        return ''
+    else:
+        return okay_paras[k]
     # END PROBLEM 1
 
 
@@ -50,6 +55,13 @@ def about(subject):
     assert all([lower(x) == x for x in subject]), 'subjects should be lowercase.'
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
+    def func(para):
+        clean_para = split(remove_punctuation(lower(para)))
+        for subj in subject:
+            if subj in clean_para:
+                return True
+        return False
+    return func
     # END PROBLEM 2
 
 
@@ -80,6 +92,31 @@ def accuracy(typed, source):
     source_words = split(source)
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
+    if typed == source == '':
+        return 100.0
+    elif typed == '' and source != '':
+        return 0.0
+    elif typed != '' and source == '':
+        return 0.0
+    elif len(typed_words) > len(source_words):
+        count_correct = 0
+        for word in range(len(source_words)):
+            if typed_words[word] == source_words[word]:
+                count_correct += 1
+        return (count_correct / len(typed_words)) * 100
+    elif len(typed_words) < len(source_words):
+        count_correct = 0
+        for word in range(len(typed_words)):
+            if typed_words[word] == source_words[word]:
+                count_correct += 1
+        # return (count_correct / len(source_words)) * 100
+        return (count_correct / len(typed_words)) * 100
+    elif len(typed_words) == len(source_words):
+        count_correct = 0
+        for word in range(len(source_words)):
+            if typed_words[word] == source_words[word]:
+                count_correct += 1
+        return (count_correct / len(source_words)) * 100
     # END PROBLEM 3
 
 
@@ -98,6 +135,9 @@ def wpm(typed, elapsed):
     assert elapsed > 0, 'Elapsed time must be positive'
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    num_words = len(typed) / 5
+    num_minutes = (elapsed // 60) + ((elapsed % 60) / 60)
+    return num_words / num_minutes
     # END PROBLEM 4
 
 
@@ -127,6 +167,22 @@ def autocorrect(typed_word, word_list, diff_function, limit):
     """
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+    if typed_word in word_list:
+        return typed_word
+    else:
+        closest_word = min(word_list, key=lambda x: diff_function(typed_word, x, limit))
+        if diff_function(typed_word, closest_word, limit) > limit:
+            return typed_word
+        else:
+            return closest_word
+        # distances = [diff_function(word) for word in word_list]
+        # if min(distances) > limit:
+        #     return typed_word
+        
+        # for distance in distances:
+
+        # corrected_word = 
+            
     # END PROBLEM 5
 
 
