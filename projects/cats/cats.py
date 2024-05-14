@@ -210,32 +210,24 @@ def feline_fixes(typed, source, limit):
     """
     # BEGIN PROBLEM 6
     # assert False, 'Remove this line'
-    if (typed == '' and source != '') or (typed != '' and source == ''):
-        ret = abs(len(source) - len(typed))
-        if ret > limit:
+    def help(typed, source, limit, num_change):
+        if num_change > limit:
             return limit + 1
-        else:
-            return ret
-    if typed == source:
-        return 0
-    else:
-        if typed[0] == source[0]:
-            ret = feline_fixes(typed[1:], source[1:], limit)
+        if (typed == '' and source != '') or (typed != '' and source == ''):
+            ret = abs(len(source) - len(typed))
             if ret > limit:
                 return limit + 1
             else:
                 return ret
+        if typed == source:
+            return 0
         else:
-            ret = 1 + feline_fixes(typed[1:], source[1:], limit)
-            if ret > limit:
-                return limit + 1
+            if typed[0] == source[0]:
+                return help(typed[1:], source[1:], limit, num_change)
             else:
-                return ret
+                return 1 + help(typed[1:], source[1:], limit, num_change + 1)
+    return help(typed, source, limit, 0)
     # END PROBLEM 6
-# print(feline_fixes('cats', 'catjuice', 10))
-limit = 20
-# print(feline_fixes("rosesabcdefghijklm", "arosenopqrstuvwxyz", limit))
-print(feline_fixes("someaweqwertyuio", "awesomeasdfghjkl", 30))
 
 ############
 # Phase 2B #
