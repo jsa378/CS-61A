@@ -249,23 +249,43 @@ def minimum_mewtations(typed, source, limit):
     >>> minimum_mewtations("ckiteus", "kittens", big_limit) # ckiteus -> kiteus -> kitteus -> kittens
     3
     """
-    assert False, 'Remove this line'
-    if ___________: # Base cases should go here, you may add more base cases as needed.
-        # BEGIN
-        "*** YOUR CODE HERE ***"
-        # END
-    # Recursive cases should go below here
-    if ___________: # Feel free to remove or add additional cases
-        # BEGIN
-        "*** YOUR CODE HERE ***"
-        # END
-    else:
-        add = ... # Fill in these lines
-        remove = ...
-        substitute = ...
-        # BEGIN
-        "*** YOUR CODE HERE ***"
-        # END
+    # assert False, 'Remove this line'
+    # if ___________: # Base cases should go here, you may add more base cases as needed.
+    #     # BEGIN
+    #     "*** YOUR CODE HERE ***"
+    #     # END
+    # # Recursive cases should go below here
+    # if ___________: # Feel free to remove or add additional cases
+    #     # BEGIN
+    #     "*** YOUR CODE HERE ***"
+    #     # END
+    # else:
+    #     add = ... # Fill in these lines
+    #     remove = ...
+    #     substitute = ...
+    #     # BEGIN
+    #     "*** YOUR CODE HERE ***"
+    #     # END
+    def help(typed, source, limit, num_change):
+        if num_change > limit:
+            return limit + 1
+        if typed in source or source in typed:
+            ret = abs(len(typed) - len(source))
+            if ret > limit:
+                return limit + 1
+            else:
+                return ret
+        if typed == source:
+            return 0
+        if typed[0] == source[0]:
+            return help(typed[1:], source[1:], limit, num_change)
+        else:
+            return min(
+                1 + help(typed, source[1:], limit, num_change + 1),
+                1 + help(typed[1:], source, limit, num_change + 1),
+                1 + help(typed[1:], source[1:], limit, num_change + 1)
+            )
+    return help(typed, source, limit, 0)
 
 
 def final_diff(typed, source, limit):
