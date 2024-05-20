@@ -326,6 +326,16 @@ def report_progress(typed, source, user_id, upload):
     """
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+    count = 0
+    for i in range(len(typed)):
+        if typed[i] == source[i]:
+            count += 1
+        else:
+            break
+    progress = count / len(source)
+    upload_arg = {'id': user_id, 'progress': progress}
+    upload(upload_arg)
+    return progress
     # END PROBLEM 8
 
 
@@ -348,6 +358,16 @@ def time_per_word(words, timestamps_per_player):
     """
     # BEGIN PROBLEM 9
     "*** YOUR CODE HERE ***"
+    thing = []
+    for l in range(len(timestamps_per_player)):
+        list_l = timestamps_per_player[l]
+        thing.append([list_l[i + 1] - list_l[i] for i in range(len(list_l) - 1)])
+    return(
+        match(
+            words,
+            thing
+        )
+    )
     # END PROBLEM 9
 
 
@@ -370,8 +390,20 @@ def fastest_words(match):
     word_indices = range(len(get_all_words(match)))    # contains an *index* for each word
     # BEGIN PROBLEM 10
     "*** YOUR CODE HERE ***"
+    ret_lists = [[] for i in player_indices]
+    if len(get_all_times(match)) == 0 or len(get_all_words(match)) == 0:
+        return ret_lists
+    biggest_time = max([max(l) for l in get_all_times(match)]) + 1
+    for word_index in word_indices:
+        index_of_fastest_player = -1
+        slowest_time = biggest_time
+        for player_index in player_indices:
+            if time(match, player_index, word_index) < slowest_time:
+                slowest_time = time(match, player_index, word_index)
+                index_of_fastest_player = player_index
+        ret_lists[index_of_fastest_player].append(get_word(match, word_index))
+    return ret_lists    
     # END PROBLEM 10
-
 
 def match(words, times):
     """A data abstraction containing all words typed and their times.
@@ -471,3 +503,7 @@ def run(*args):
     args = parser.parse_args()
     if args.t:
         run_typing_test(args.topic)
+
+player_0 = [5, 1, 3]
+player_1 = [4, 1, 6]
+print(fastest_words(match(['Just', 'have', 'fun'], [player_0, player_1])))
