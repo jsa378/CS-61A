@@ -32,6 +32,8 @@ cube(4)
 ```
 there are three frames. In the global frame, we have `x = 2`, and the names `square` and `cube` refer to their respective functions. In the `square` frame, we have `x = 3`, and in the `cube` frame, we have `x = 4`. Thus, in this program, `x` refers to three different values, but there's no problem because the three frames are separate. Also note that the local function frames keep track of the values they return.
 
+Note also that if we put `y = 1` at the top of the program, then that binding would exist in the global frame, but the two programs would also have access to `y`. So in some sense the frames for the functions are sub-frames of the global frame. If we also put `y = 9` in either of the function bodies, then `y` would refer to `9` within each function frame. Lastly, if we only put `y = 9` in either of the function bodies, but did not define `y` in the global frame, then `y` does not exist in the global frame.
+
 ## Ch. 1.4
 
 ## Ch. 1.5
@@ -64,6 +66,8 @@ I think to exhibit at least a minimal grasp of recursion as a programmer, there 
 Now, I don't know how you *prove* that a recursive program is correct, but I think that's at least the idea for how you *write* a recursive program.
 
 Note: I have been working on Discussion 04, and solving some exercises in programming recurisvely. I think it may be helpful to try to think in terms of strong induction when trying to reason about how to write a recursive function.
+
+Note 2: Here is a another way of thinking about a recursive function that occurred to me. First, try to ask yourself if the thing the function does can be defined in terms of doing the same thing on a smaller scale, in some way. This is the recursive aspect. If yes, then try to identify the base case(s): these are cases for specific types of inputs to the function where you have to explicitly write out what the function should return. Then assuming the function gets an input that is not one of the basic cases, you have to figure out how you would break it down into one or more calls of the same function on smaller versions of the input.
 
 ## Ch. 2.1
 
