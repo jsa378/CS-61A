@@ -31,8 +31,11 @@ def buy(required_fruits, prices, total_amount):
             fruit = fruits[0]
             # price = amount[fruit]
             price = prices[fruit]
-            for k in fruits[1:]:
-                add(k, amount - price, cart + fruit)
+            for k in range(len(fruits)):
+                add(fruits[k:], amount - price, cart + fruit)
+                # add(fruits[k:], amount - price, display(fruit, amount))
+            # for k in fruits[1:]:
+            #     add(k, amount - price, cart + fruit)
                 # add(k, amount - price, )
     add(required_fruits, total_amount, '')
 
