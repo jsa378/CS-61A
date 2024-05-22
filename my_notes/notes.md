@@ -79,6 +79,8 @@ In Chapter 2, we're pursuing a similar idea, but with respect to data. Data and 
 
 I think part of the reason the book promotes these different levels of abstraction is to try to make it possible to think about a program at different levels of abstraction, and also because it hopefully increases the modularity of the program and makes it easier to modify.
 
+A data abstraction is a set of functions that compose and decompose compound data values. (I don't know if these definitions are rigorous.) The data abstraction consists of a constructor, which puts the data values together, and one or more selectors, which select constituent components of the compound data value. A general principle promoted in the course is to not violate the data abstraction barrier, which I take to mean that when using the compound data value, try as much as possible to do so via calls to the constructor and selectors. This way, if you decide to change the details of the constructor and selector later on, as long as they still produce the same output, none of your code that uses the compound data values has to change at all.
+
 ## Ch. 2.3
 
 I'm probably misunderstanding aspects of this presentation, but I think that there are a couple of things that are not being made clear. Below is my flawed attempt to make some sense of this.
