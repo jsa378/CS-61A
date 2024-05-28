@@ -34,6 +34,8 @@ there are three frames. In the global frame, we have `x = 2`, and the names `squ
 
 Note also that if we put `y = 1` at the top of the program, then that binding would exist in the global frame, but the two programs would also have access to `y`. So in some sense the frames for the functions are sub-frames of the global frame. If we also put `y = 9` in either of the function bodies, then `y` would refer to `9` within each function frame. Lastly, if we only put `y = 9` in either of the function bodies, but did not define `y` in the global frame, then `y` does not exist in the global frame.
 
+Edit: I've been thinking more about this, after working on a midterm problem related to frames. These are just notes to myself. Remember that an environment is a sequence of frames. These frames are nested in some sense; the innermost frame has highest priority when looking up a name, and the outermost frame is the global frame, I think. Note that frames in one environment are not necessarily disjoint from frames in another environment---for example, obviously the global frame is shared across all environments. Also remember that the parent frame of any function call is whichever frame the function being called was defined in.
+
 ## Ch. 1.4
 
 ## Ch. 1.5
