@@ -158,7 +158,15 @@ def max_path_sum(t):
     17
     """
     "*** YOUR CODE HERE ***"
-
+    if is_leaf(t):
+        return label(t)
+    else:
+        m = 0
+        for b in branches(t):
+            v = max_path_sum(b)
+            if v > m:
+                m = v
+        return label(t) + m
 
 
 # Tree Data Abstraction
