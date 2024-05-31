@@ -297,3 +297,33 @@ def max_path(t, k):
             b = [ helper(b, k, False) for b in branches(t) ]
             return max(a + b, key = sum)
     return helper(t, k, False)
+
+def count_ways(t, total):
+    """Return the number of ways that any sequence of consecutive nodes in a root-to-leaf path
+    can sum to total.
+    >>> t1 = tree(5, [tree(1, [tree(2, [tree(1)]),
+    ...                        tree(1, [tree(4, [tree(2, [tree(2)])])])]),
+    ...               tree(3, [tree(2, [tree(2),
+    ...                                 tree(3)])]),
+    ...               tree(3, [tree(1, [tree(3)])])])
+    >>> count_ways(t1, 7)
+    4
+    >>> count_ways(t1, 4)
+    6
+    >>> t2 = tree(2, [tree(-10, [tree(12)]),
+    ...               tree(1, [tree(1),
+    ...                        tree(-1, [tree(2)])])])
+    >>> count_ways(t2, 2)
+    6
+    >>> count_ways(t2, 4)
+    3
+    """
+    def paths(t, total, can_skip):
+        ways = 0
+        if total == label(t):
+            ways += 1
+        ways += sum([ paths(b, total - label(t), False) for b in branches(t)])
+        if can_skip:
+            ways += sum([ paths(b, total, True) for b in branches(t)])
+        return ways
+    return paths(t, total, True)

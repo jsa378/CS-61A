@@ -1,5 +1,15 @@
 # *Composing Programs* notes
 
+### Things I should review
+
+- Composing Programs 2.3.5--2.3.7 are probably worth re-reading (data structures)
+- From HW04: I should try to understand the solutions to Summer 2019 MT Q8 and Summer 2017 MT Q9
+- 
+
+### Watching videos and reading slides
+
+-Next: 1/29 lecture
+
 ## Ch. 1.1
 
 
