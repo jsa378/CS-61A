@@ -93,6 +93,8 @@ I think part of the reason the book promotes these different levels of abstracti
 
 A data abstraction is a set of functions that compose and decompose compound data values. (I don't know if these definitions are rigorous.) The data abstraction consists of a constructor, which puts the data values together, and one or more selectors, which select constituent components of the compound data value. A general principle promoted in the course is to not violate the data abstraction barrier, which I take to mean that when using the compound data value, try as much as possible to do so via calls to the constructor and selectors. This way, if you decide to change the details of the constructor and selector later on, as long as they still produce the same output, none of your code that uses the compound data values has to change at all.
 
+As an example (that I'm not too sure about), if you look at the tree constructor and selectors in Ch. 2.3, notice that these functions have to deal with the fact that we're implementing our trees as lists. (The function `is_tree` also needs to deal with the fact that our trees are lists, it appears.) But many of the things we've done with tree, e.g. in Homework 4, don't see to require that we know our trees are implemented as lists---at least I don't think they do.
+
 ## Ch. 2.3
 
 I'm probably misunderstanding aspects of this presentation, but I think that there are a couple of things that are not being made clear. Below is my flawed attempt to make some sense of this.
@@ -100,3 +102,8 @@ I'm probably misunderstanding aspects of this presentation, but I think that the
 There is a topic called "data structures" that has to do with how data are stored and manipulated in the computer, I think. We can either talk about *abstract data types*, or *data structures*. Abstract data types are mathematical models for ways of storing (and accessing?) data in the computer. Data structures are concrete implementations.
 
 We have various types of abstract data types and data structures because they are good for different things, and offer different tradeoffs. For example, data structure $A$ may be more efficient if you need to update the data in $A$ frequently, while data structure $B$ may be more efficient if you only need to access the data, not to modify any of it.
+
+Also notice the recursive nature of trees and linked lists (the main data structures presented in 2.3). Trees contain smaller trees (smaller versions of themselves), and linked lists contain smaller linked lists. This at least suggests that recursive techniques would be useful for working with these data structures.
+
+## Ch. 2.4
+
