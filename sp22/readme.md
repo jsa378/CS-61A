@@ -1,0 +1,3 @@
+UC Berkeley CS 61A, spring 2022.
+
+As of summer 2024, somebody is hosting the Spring 2022 version of CS 61A at [https://cs61a.vercel.app/](https://cs61a.vercel.app/). The contents of this directory are the result of running `wget -r https://cs61a.vercel.app/` roughly in June 2024. I am not sure that all of the resources were actually downloaded from the website, but hopefully enough resources were downloaded to make it possible to follow along with this version of the course.
